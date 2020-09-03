@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="HubSpot Suite" thread-count="1" parallel="tests"
+	verbose="2">
+	
+	<listeners>
+		<listener class-name="com.qa.hubspot.listeners.ExtentReportListener" />
+		<!-- <listener class-name="com.qa.hubspot.listeners.ScreenshotListener" />
+	    <listener class-name="com.qa.hubspot.listeners.PdfListener" />
+		<listener class-name="com.qa.hubspot.listeners.TestAllureListener" />
+		<listener class-name="com.qa.hubspot.listeners.TesultsListener" /> -->
+	</listeners>
+
+	<test name="Login Page Test">
+		<classes>
+			<class name="com.qa.hubspot.tests.LoginPageTest" />
+		</classes>
+	</test>
+
+	<test name="Home Page Test">
+		<classes>
+			<class name="com.qa.hubspot.tests.HomePageTest" />
+		</classes>
+	</test>
+
+<!-- 	<test name="Contact Page Test">
+		<classes>
+			<class name="com.qa.hubspot.tests.ContactPageTest" />
+		</classes>
+	</test>
+	
+		<test name="Deal Page Test">
+		<classes>
+			<class name="com.qa.hubspot.tests.DealPageTest" />
+		</classes>
+	</test> -->
+
+</suite>
