@@ -5,10 +5,10 @@
 
 	<listeners>
 		<listener class-name="com.qa.hubspot.listeners.ExtentReportListener" />
-		<!-- <listener class-name="com.qa.hubspot.listeners.ScreenshotListener" />
-	    <listener class-name="com.qa.hubspot.listeners.PdfListener" />
+		<listener class-name="com.qa.hubspot.listeners.ScreenshotListener" />
+	<!--     <listener class-name="com.qa.hubspot.listeners.PdfListener" /> -->
 		<listener class-name="com.qa.hubspot.listeners.TestAllureListener" />
-		<listener class-name="com.qa.hubspot.listeners.TesultsListener" /> -->
+		<listener class-name="com.qa.hubspot.listeners.TesultsListener" />
 	</listeners>
 
 	<test name="Login Page Test">
@@ -23,7 +23,7 @@
 		</classes>
 	</test>
 
-<!-- 	<test name="Contact Page Test">
+	<test name="Contact Page Test">
 		<classes>
 			<class name="com.qa.hubspot.tests.ContactPageTest" />
 		</classes>
@@ -33,6 +33,6 @@
 		<classes>
 			<class name="com.qa.hubspot.tests.DealPageTest" />
 		</classes>
-	</test> -->
+	</test>
 
 </suite>
