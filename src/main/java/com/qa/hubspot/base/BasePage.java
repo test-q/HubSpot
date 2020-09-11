@@ -35,26 +35,63 @@ public class BasePage {
  * @param Pass Properties
  * @return This method return driver
  */
+//	public WebDriver init_driver(Properties prop) {
+//		flashElement = prop.getProperty("highlights").trim();
+//		String browserName = prop.getProperty("browser");
+//		System.out.println("Browser Name is: " + browserName);
+//		optionsManager = new OptionsManager(prop);
+//		
+//		if (browserName.equalsIgnoreCase("chrome")) {
+//			WebDriverManager.chromedriver().setup();
+//			//driver = new ChromeDriver(optionsManager.getChromeOptions());
+//			tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
+//		} 
+//		else if (browserName.equalsIgnoreCase("firefox")) {
+//			WebDriverManager.firefoxdriver().setup();
+//			//driver = new FirefoxDriver(optionsManager.getFirefoxOptions());
+//			tlDriver.set(new FirefoxDriver(optionsManager.getFirefoxOptions()));
+//		}
+//		else {
+//			System.out.println("Please Pass The Correct Browser Name : " + browserName);
+//		}
+//		
+//		getDriver().manage().deleteAllCookies();
+//		getDriver().manage().window().maximize();
+//		getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		getDriver().get("https://app.hubspot.com/login");
+//		return getDriver();
+//	}
+	
 	public WebDriver init_driver(Properties prop) {
+		//String browser = "";
 		flashElement = prop.getProperty("highlights").trim();
-		String browserName = prop.getProperty("browser");
-		System.out.println("Browser Name is: " + browserName);
+		String browser = System.getProperty("browser");
+		System.out.println("Browser Name is: " + browser);
 		optionsManager = new OptionsManager(prop);
+	
 		
-		if (browserName.equalsIgnoreCase("chrome")) {
+		if(browser == null) {
 			WebDriverManager.chromedriver().setup();
-			//driver = new ChromeDriver(optionsManager.getChromeOptions());
-			tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));;
-		} 
-		else if (browserName.equalsIgnoreCase("firefox")) {
-			WebDriverManager.firefoxdriver().setup();
-			//driver = new FirefoxDriver(optionsManager.getFirefoxOptions());
-			tlDriver.set(new FirefoxDriver(optionsManager.getFirefoxOptions()));
+			tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
+			
+		}else {
+			switch(browser) {
+			case "chrome":
+				WebDriverManager.chromedriver().setup();
+				tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
+				break;
+				
+			case "firefox":
+				WebDriverManager.firefoxdriver().setup();
+				tlDriver.set(new FirefoxDriver(optionsManager.getFirefoxOptions()));
+				break;
+				
+			default:
+				System.out.println("Please Pass The Correct Browser Name : " + browser);
+			
+			}
+			
 		}
-		else {
-			System.out.println("Please Pass The Correct Browser Name : " + browserName);
-		}
-		
 		getDriver().manage().deleteAllCookies();
 		getDriver().manage().window().maximize();
 		getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
