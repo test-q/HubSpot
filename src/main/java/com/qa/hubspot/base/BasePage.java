@@ -62,6 +62,11 @@ public class BasePage {
 //		return getDriver();
 //	}
 	
+	/**
+	 * 
+	 * @param prop
+	 * @return This method return driver. Use This method When you use Blue Ocean Pipeline concept
+	 */
 	public WebDriver init_driver(Properties prop) {
 		//String browser = "";
 		flashElement = prop.getProperty("highlights").trim();
