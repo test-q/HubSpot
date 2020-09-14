@@ -36,7 +36,7 @@ public class BasePage {
 		flashElement = prop.getProperty("highlights").trim();
 		
 		if(Boolean.parseBoolean(prop.getProperty("bluePipeline"))) {
-			//When Blue Ocean Pipeline is true 
+			//When Blue Ocean Pipeline is true than this code is executed bcoz we are reading bowser value from system
 			String browser = System.getProperty("browser");
 			System.out.println("Browser Name is: " + browser);
 			optionsManager = new OptionsManager(prop);
@@ -71,7 +71,7 @@ public class BasePage {
 			
 		}
 		else {
-			//When Blue Ocean Pipeline is true and used to initialize the WebDriver on the basis of given browser name
+			//When Blue Ocean Pipeline is false and take browser name from Config.property file i.e when normal jenkin job run.
 			
 			String browserName = prop.getProperty("browser");
 			System.out.println("Browser Name is: " + browserName);
