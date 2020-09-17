@@ -29,7 +29,7 @@ public class HomePageTest extends BaseTest {
 		Assert.assertEquals(header, ConstantUtil.HOMEPAGE_HEADER.trim());
 	}
 
-	@Test(priority = 3)
+	@Test(enabled = false, priority = 3 )
 	public void verifyHomePageAccountName() {
 		String accountname = homepage.getAccountName();
 		System.out.println("Account Name Is: " + accountname);
