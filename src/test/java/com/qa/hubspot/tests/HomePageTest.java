@@ -29,12 +29,12 @@ public class HomePageTest extends BaseTest {
 		Assert.assertEquals(header, ConstantUtil.HOMEPAGE_HEADER.trim());
 	}
 
-	@Test(enabled = false, priority = 3 )
-	public void verifyHomePageAccountName() {
-		String accountname = homepage.getAccountName();
-		System.out.println("Account Name Is: " + accountname);
-		Assert.assertEquals(accountname, ConstantUtil.HOMEPAGE_ACCOUNTNAME.trim());
-	}
+//	@Test(priority = 3 )
+//	public void verifyHomePageAccountName() {
+//		String accountname = homepage.getAccountName();
+//		System.out.println("Account Name Is: " + accountname);
+//		Assert.assertEquals(accountname, ConstantUtil.HOMEPAGE_ACCOUNTNAME.trim());
+//	}
 
 	@Test(priority = 4)
 	public void verifyHomePageIsSettingIconExits() {

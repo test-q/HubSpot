@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="HubSpot Suite" thread-count="3" parallel="tests" verbose="2">
+<suite name="HubSpot Suite" thread-count="2" parallel="tests" verbose="2">
 
 	<test name="Login Page Test -- CHROME">
 		<parameter name="browser" value="chrome" />
