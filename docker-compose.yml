@@ -30,24 +30,8 @@ services:
       - "32768:5900"
     links:
       - selenium-hub
-  chrome:
-    image: selenium/node-chrome-debug:60
-    container_name: web-automation_chrome
-    environment:
-      HUB_PORT_4444_TCP_ADDR: selenium-hub
-      HUB_PORT_4444_TCP_PORT: 4444
-      NODE_MAX_SESSION: 1
-      NODE_MAX_INSTANCES: 1
-    volumes:
-      - /dev/urandom:/dev/random
-    deploy:
-      replicas: 1
-    depends_on:
-      - selenium-hub
-    ports:
-      - "32768:5900"
-    links:
-      - selenium-hub
+
+
   firefox:
     image: selenium/node-firefox-debug
     container_name: web-automation_firefox

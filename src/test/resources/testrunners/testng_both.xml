@@ -3,6 +3,14 @@
 
 <suite name="HubSpot Suite" thread-count="2" parallel="tests" verbose="2">
 
+	<listeners>
+		<listener class-name="com.qa.hubspot.listeners.ExtentReportListener" />
+		<listener class-name="com.qa.hubspot.listeners.ScreenshotListener" />
+	<!--     <listener class-name="com.qa.hubspot.listeners.PdfListener" /> -->
+		<listener class-name="com.qa.hubspot.listeners.TestAllureListener" />
+		<listener class-name="com.qa.hubspot.listeners.TesultsListener" />
+	</listeners>
+
 	<test name="Login Page Test -- CHROME">
 		<parameter name="browser" value="chrome" />
 		<classes>
