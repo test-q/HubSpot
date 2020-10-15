@@ -20,6 +20,7 @@ public class HomePage extends BasePage{
 	private By contactsSubMenu =  By.id("nav-secondary-contacts");
 	private By salesParentMenu = By.id("nav-primary-sales-branch");
 	private By dealSubMenu = By.xpath("(//a[@id='nav-secondary-deals'])[1]");
+	
 
 	// Constructor of the page:
 	public HomePage(WebDriver driver) {
@@ -75,13 +76,6 @@ public class HomePage extends BasePage{
 		
 		return new DealPage(driver);  //Page chaining for Deal Page
 	}
-
-	
-	
-	
-	
-	
-	
 	
 	
 }
