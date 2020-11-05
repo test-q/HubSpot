@@ -23,25 +23,25 @@ public class BaseTest {
 	public DealPage dealpage;
 
 	//If you want to execute some test case on chrome and some on firefox than use @Parameters
-	@Parameters("browser")
-	@BeforeTest
-	public void setup(String browsername) {
-		System.out.println("BrowserName is: " +browsername);
-		basepage = new BasePage();
-		prop = basepage.init_prop();
-		prop.setProperty("browser", browsername);
-		driver = basepage.init_driver(prop);
-		loginpage = new LoginPage(driver);
-	}
-	
-	//If you want to execute all test cases in single browser
+//	@Parameters("browser")
 //	@BeforeTest
-//	public void setup() {
+//	public void setup(String browsername) {
+//		System.out.println("BrowserName is: " +browsername);
 //		basepage = new BasePage();
 //		prop = basepage.init_prop();
+//		prop.setProperty("browser", browsername);
 //		driver = basepage.init_driver(prop);
 //		loginpage = new LoginPage(driver);
 //	}
+	
+	//If you want to execute all test cases in single browser
+	@BeforeTest
+	public void setup() {
+		basepage = new BasePage();
+		prop = basepage.init_prop();
+		driver = basepage.init_driver(prop);
+		loginpage = new LoginPage(driver);
+	}
 	
 	@AfterTest
 	public void tearDown() {

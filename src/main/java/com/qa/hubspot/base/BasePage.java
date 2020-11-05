@@ -42,7 +42,7 @@ public class BasePage {
 		flashElement = prop.getProperty("highlights").trim();
 		
 		if(Boolean.parseBoolean(prop.getProperty("bluePipeline"))) {
-			//When Blue Ocean Pipeline is true than this code is executed bcoz we are reading bowser value from system
+			//When Blue Ocean Pipeline is true than this code is executed bcoz we are reading bowser value from system level ie on cmd promp
 			String browser = System.getProperty("browser");
 			System.out.println("Browser Name is: " + browser);
 			optionsManager = new OptionsManager(prop);

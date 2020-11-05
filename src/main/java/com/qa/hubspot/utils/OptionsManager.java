@@ -21,6 +21,10 @@ public class OptionsManager {
 			co.addArguments("--headless");
 		}
 		
+		if(Boolean.parseBoolean(prop.getProperty("sslCertificate"))) {
+			co.setAcceptInsecureCerts(true);
+		}
+		
 		if(Boolean.parseBoolean(prop.getProperty("incognito"))) co.addArguments("--incognito");
 		return co;
 	}
@@ -29,6 +33,10 @@ public class OptionsManager {
 		fo = new FirefoxOptions();
 		if(Boolean.parseBoolean(prop.getProperty("headless"))) {
 			fo.addArguments("--headless");
+		}
+		
+		if(Boolean.parseBoolean(prop.getProperty("sslCertificate"))) {
+			fo.setAcceptInsecureCerts(true);
 		}
 		
 		if(Boolean.parseBoolean(prop.getProperty("incognito"))) fo.addArguments("--incognito");
