@@ -1,5 +1,8 @@
 package com.qa.hubspot.utils;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -71,7 +74,71 @@ public class ElementUtils {
 	public boolean doIsDisplayed(By locator) {
 		return getElement(locator).isDisplayed();
 	}
+	
+	
+	public boolean isLinksBroken() {
+		HttpURLConnection httpConnect = null;
+		int respCode = 200;
+		String url = "";
+		String urlName = "";
+		String deadUrl = "";
+		List<String> deadLinkList = new ArrayList<String>();
+		boolean flag = false;
+		
+		List<WebElement> eleList = driver.findElements(By.tagName("a"));
+		System.out.println("No of Links On Page: " + eleList.size());
+		for(WebElement ele : eleList) {
+			url = ele.getAttribute("href");
+			urlName = ele.getText();
+			//System.out.println(urlName + " : " + url);
 
+			if (url == null || url.isEmpty()) {
+				System.out.println("URL is either not configured for anchor tag or it is empty");
+				System.out.println("URL Name: " + urlName + " ==> " + url);
+				deadUrl = url;
+				continue;
+			}
+			try {
+				httpConnect = (HttpURLConnection) (new URL(url).openConnection());
+				httpConnect.setRequestMethod("HEAD");
+				httpConnect.connect();
+				respCode = httpConnect.getResponseCode();
+				if (respCode >= 400) {
+					System.out.println("URL Name: " + urlName + " ==> " + url + " :: Broken Link");
+				} else {
+					//System.out.println("URL Name: " + urlName + " : " + url + " ::  Valid Link");
+				}
+
+			} catch (IOException e) {
+
+				e.printStackTrace();
+			}
+			deadLinkList.add(deadUrl);
+		}
+		
+		if(deadLinkList.isEmpty()) {
+			flag = true;
+		}
+		return flag;
+	}
+
+	public boolean doAllLinkClick() {
+		List<WebElement> elementList = new ArrayList();
+		List<WebElement> finalList = new ArrayList();
+		boolean flag = false;
+		
+		elementList = driver.findElements(By.tagName("a"));
+		System.out.println("No. of Link available: " + elementList.size());
+		for (WebElement element : elementList) {
+			if (element.getAttribute("href") != null) {
+				element.click();
+				driver.navigate().back();
+				flag = true;
+			}
+		}
+		return flag;
+	}
+	
 	/**
 	 * this method is used to find all Links on Web page and click given value
 	 * 
